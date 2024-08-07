@@ -59,7 +59,7 @@ while True:
                     extrato += f"Depósito de R$ {valor:.2f} || ";
                     break;
                 else:
-# Garantindo que o usuário digite apenas valores inteiros, caso não o programa irá lhe manda inserir o valo novamente
+# Garantindo que o usuário digite apenas valores positivos, caso não o programa irá lhe manda inserir o valo novamente
                     continuar_operacao=int(input("""
     ----------------------------------------------
     | O VALOR A SER DEPOSISTADO DEVE SER POSITIVO |
@@ -67,6 +67,7 @@ while True:
     |      Deseja continuar ? sim = 1 não = 0     |
     -----------------------------------------------
                         """));
+# PÓS ELE ERRAR NO VALOR QUE DEVERIA SER INTEIRO O PROGRAM LHE PERGUNTA SE ELE DESEJA VOLTAR A TENTAR OU VAI VOLTAR AO MENU PRINCIPAL
                     os.system('cls');
                     if continuar_operacao== 0:
                        break;
@@ -79,6 +80,7 @@ while True:
     ----------------------------------------------
                         """));
                 os.system('cls');
+    # CONTROLANDO O NÚMERO DE VEZES QUE O USUÁRIO JÁ FEZ O SAQUE
                 if LIMITE_SAQUE <= int(operacoes_de_saque):
                     os.system('cls');
                     print("""
@@ -87,7 +89,7 @@ while True:
     -----------------------------------------------
                         """);
                     break;
-         # VERIFICANDO SE O SACAR ESTÁ DENTRO DO LIMITE DE SAQUE POR DIA R$ 5OO,00
+         # VERIFICANDO SE O SAQUE ESTÁ DENTRO DO LIMITE DE SAQUE POR DIA R$ 5OO,00
                 if saldoTotal >= valor and valor > 0 and valor <= 500:
                     print(f"""
     ---------------------------------------------
@@ -104,6 +106,7 @@ while True:
                     extrato += (f"SAQUE de R$ {valor:.2f} || ");
                     break;
                 elif valor > 500:
+                    #EXIBINDO SMS DE ERRO CASO SE TENTAR FAZER SAQUE A CIMA DE 5OO
                     os.system('cls');
                     continuar_operacao=int(input("""
     ----------------------------------------------
@@ -116,6 +119,7 @@ while True:
                     if continuar_operacao== 0:
                        break;
                 else:
+                    #ESTA SMS DE ERRO É EXIBIDA QUANDO O USUÁRIO TENTA SACAR UM VALOR ACINA DO TEM OU MESMO NEGATIVO E QUANDO N TENS DINHEIRO EM CONTA
                     print("""
     ------------------------------------------------
     |                 SAQUE INVÁLIDO               |
@@ -127,6 +131,7 @@ while True:
         """);
                     break;
         elif opcao==3:
+            # EXIBINDO O EXTRATO BANCÁRIO
             resultado_extrato=("Nenhuma movimentação foi feita em sua conta." if not extrato else extrato);
             print(f"""
     -------------------------------------------------------------------------------------------------------------------------------------------
